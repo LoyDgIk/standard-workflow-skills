@@ -1,0 +1,4 @@
+interface:
+  display_name: "Standard Drafting Workflow"
+  short_description: "Draft standards from evidence to DOCX"
+  default_prompt: "Draft a Chinese standard from my topic: collect intent, search evidence, write md2std Markdown, validate references, and convert to DOCX."

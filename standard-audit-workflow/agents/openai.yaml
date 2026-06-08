@@ -1,0 +1,4 @@
+interface:
+  display_name: "Standard Audit Workflow"
+  short_description: "Run mechanical and AI standard audits"
+  default_prompt: "Audit this Chinese standard Markdown with mechanical checks and an AI checklist review."

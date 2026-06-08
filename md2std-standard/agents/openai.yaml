@@ -1,0 +1,4 @@
+interface:
+  display_name: "md2std Standard"
+  short_description: "Prepare md2std cover metadata and generate DOCX"
+  default_prompt: "Prepare a Chinese standard Markdown file with md2std cover metadata and convert it to DOCX."
