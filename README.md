@@ -18,8 +18,8 @@
 | --- | --- |
 | [MdToStandardWord](https://github.com/LoyDgIk/MdToStandardWord) | 将标准 Markdown 转换为 Word `.docx`。 |
 | [md2std-standard-auditor](https://github.com/LoyDgIk/md2std-standard-auditor) | 对标准 Markdown 做机械审校。 |
-| GBMCP | 检索标准信息、详情和可下载文本。 |
-| CKCEST | 检索政策、科研项目和统计数据。 |
+| [GBMCP](https://github.com/LoyDgIk/GBMCP) | 检索标准信息、详情和可下载文本。 |
+| [CKCEST-MCP](https://github.com/LoyDgIk/CKCEST-MCP) | 检索政策、科研项目和统计数据。 |
 
 ## 本地安装
 
