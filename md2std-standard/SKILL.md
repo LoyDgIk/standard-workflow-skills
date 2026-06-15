@@ -199,7 +199,23 @@ Inline `$$...$$` fragments are converted to Word native math (OMML). Use them fo
 
 ## Terms
 
-In `# 术语和定义`, write each term as a second-level heading. Separate Chinese and English terms with two spaces:
+In `# 术语和定义`, the renderer inserts the default lead before local term
+entries when it is omitted:
+
+```md
+下列术语和定义适用于本文件。
+```
+
+If the chapter is empty, the renderer inserts:
+
+```md
+本文件没有需要界定的术语和定义。
+```
+
+If the terms are only imported from another standard, write `……界定的术语和定义适用于本文件。`.
+If both imported terms and local entries are used, write `……界定的以及下列术语和定义适用于本文件。`.
+
+Write each local term as a second-level heading. Separate Chinese and English terms with two spaces:
 
 ```md
 ## 地热温泉  geothermal hot spring
@@ -207,7 +223,33 @@ In `# 术语和定义`, write each term as a second-level heading. Separate Chin
 由地球内部热源加热……
 ```
 
-Do not include the generated term number in Markdown. The renderer makes both the Chinese and English term bold.
+Alternatively, use the explicit term marker when a term title should not be a Markdown heading:
+
+```md
+{术语：地热温泉 | geothermal hot spring}
+
+由地球内部热源加热……
+```
+
+Do not include the generated term number in Markdown. The renderer makes both the Chinese and English term bold. Do not italicize ordinary English equivalents. Use Markdown italic only for names that should be italic in the source text, such as Latin scientific or taxonomic names:
+
+```md
+{术语：大肠埃希氏菌 | *Escherichia coli*}
+```
+
+## Symbols and Abbreviations
+
+If `# 符号和缩略语` is present, the renderer inserts a default lead when it
+is omitted. Write one of these leads explicitly when the wording needs to
+distinguish symbols from abbreviations:
+
+```md
+下列符号适用于本文件。
+下列缩略语适用于本文件。
+下列符号和缩略语适用于本文件。
+```
+
+Then list each symbol or abbreviation as an ordinary paragraph, without a generated no-title clause marker.
 
 ## Normative References
 
@@ -217,6 +259,10 @@ In `# 规范性引用文件`, write one standard per paragraph:
 GB 5749  生活饮用水卫生标准
 GB/T 11615  地热资源地质勘查规范
 ```
+
+The renderer inserts the GB/T 1.1 fixed lead before the list when it is
+omitted. If writing the lead manually, use the fixed wording and do not
+paraphrase it.
 
 According to GB/T 1.1—2020, 8.6.3.2, list normative references in this overall order:
 
@@ -254,6 +300,9 @@ If there are no normative references, write:
 本文件没有规范性引用文件。
 ```
 
+An empty `# 规范性引用文件` chapter is also accepted; the renderer inserts
+`本文件没有规范性引用文件。`.
+
 ## Tables
 
 Put the table caption marker immediately before the table. The caption title must be pure title text:
@@ -275,6 +324,8 @@ Rules:
 - GFM tables and HTML `<table>` are supported.
 - Use HTML tables when source tables need `rowspan`, `colspan`, empty merged cells, or fine border control.
 - Use inline formula `$$...$$` inside ordinary paragraphs, table cells, table notes, figure paragraphs, sources, and footnotes. `<eq>...</eq>` is legacy-compatible only; do not use it in new examples.
+- Table headers are centered by default. Body cells with short values, numbers, symbols, or codes are centered by default; longer explanatory text is left-aligned.
+- In HTML tables, override cell alignment with `data-align="left"`, `data-align="center"`, `data-align="right"`, or `data-align="decimal"`. `decimal` is a practical numeric-column control and is emitted as right alignment.
 - Table unit, source, and footnotes are block add-ons after the target table: `{单位} ...`, `{来源} ...`, `{脚注} ...`.
 - In table cells, write ordinary notes as inline `〔注：...〕`; a cell may contain only notes, and consecutive notes in the same cell are numbered automatically.
 - In table cells, write footnote reference points as inline `〔脚注〕`; the matching footnote content is a following block `{脚注} ...`.
@@ -297,8 +348,8 @@ HTML table example:
   </tr>
   <tr>
     <td>一类</td>
-    <td></td>
-    <td>同上</td>
+    <td data-align="decimal">12.5</td>
+    <td data-align="left">同上</td>
   </tr>
   <tr>
     <td colspan="3">〔注：空单元格保持为空，“同上”按普通文本输出。〕</td>
