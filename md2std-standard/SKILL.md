@@ -112,6 +112,12 @@ For no-title clauses, use explicit level syntax instead of writing the visible n
 {无标题条:4} 这是 X.Y.Z.W 级无标题条正文。
 ```
 
+Do not use `{无标题条:n}` in foundational chapters: `# 范围`, `# 规范性引用文件`,
+`# 术语和定义`, or `# 符号和缩略语`. Write those sections as ordinary
+paragraphs, normative-reference entries, symbol entries, or term blocks. Use
+no-title clauses only in technical chapters after `# 术语和定义`, or in
+appendices.
+
 If source text contains old manual no-title clauses such as `4.2.1 正文`, keep them as ordinary text only if preserving source evidence is necessary; otherwise convert them to `{无标题条:n}`.
 
 Use a standalone page break marker when a standard requires an explicit new page:
