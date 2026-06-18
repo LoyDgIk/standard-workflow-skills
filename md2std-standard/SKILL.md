@@ -253,11 +253,16 @@ Then list each symbol or abbreviation as an ordinary paragraph, without a genera
 
 ## Normative References
 
-In `# 规范性引用文件`, write one standard per paragraph:
+In `# 规范性引用文件`, write one standard per paragraph and register it at
+the start of the line with `{{std:id}}`:
 
 ```md
-GB 5749  生活饮用水卫生标准
-GB/T 11615  地热资源地质勘查规范
+{{std:GB 5749}} GB 5749  生活饮用水卫生标准
+{{std:GB/T 1.1—2020}} GB/T 1.1—2020  标准化工作导则 第1部分：标准化文件的结构和起草规则
+{{std:GB/T 11615}} GB/T 11615  地热资源地质勘查规范
+{{std:JIS S 6006:2007}} JIS S 6006:2007  铅笔、彩色铅笔及其笔芯
+{{std:ISO 3160-2:2015}} ISO 3160-2:2015  表壳体及其附件 金合金覆盖层 第2部分:纯度、厚度、耐腐蚀性能和附着力的测试
+{{std:EN 71—3:2019}} EN 71—3:2019  玩具安全 第3部分:特定元素的迁移
 ```
 
 The renderer inserts the GB/T 1.1 fixed lead before the list when it is
@@ -286,11 +291,19 @@ Notes:
 - 同类标准中不区分强制性标准和推荐性标准，统一按顺序号排序。
 - 如有特殊领域要求（如工程建设标准），需按“先工程建设标准、后产品标准”的顺序，依标准编号顺序排列。
 
-Reference standard numbers with exact text matching:
+Reference standard numbers with `{{std:...}}`. Dated and undated forms match
+when the alias is derivable, so `{{std:GB/T 1.1}}` can cite a registered
+`GB/T 1.1—2020`, and `{{std:ISO 3160-2}}` can cite a registered
+`ISO 3160-2:2015`.
 
 ```md
 各阶段工作应符合{{std:GB/T 11615}}的规定。
 ```
+
+Domestic dated standard numbers must use `—`, for example
+`GB/T 1.1—2020`; do not write `GB/T 1.1-2020` or `GB/T 1.1–2020`.
+Unmarked legacy entries may still be accepted by the generator for
+compatibility, but they produce warnings and should not be used in new drafts.
 
 If there are no normative references, write:
 
@@ -438,6 +451,7 @@ Use only double-brace references:
 {{eq:depth}}            # 1
 {{eq:depth:label}}      # 式（1）
 {{std:GB/T 11615}}      # GB/T 11615
+{{std:ISO 3160-2:2015}} # ISO 3160-2:2015
 ```
 
 Rules:

@@ -83,8 +83,9 @@ Separate:
 
 Rules:
 
-- Every normative reference listed in `# 规范性引用文件` must be cited in the body with `{{std:...}}`.
-- Every body `{{std:...}}` citation must have a matching normative reference entry.
+- Every normative reference listed in `# 规范性引用文件` must start with an explicit registration marker, for example `{{std:GB/T 11615}} GB/T 11615  地热资源地质勘查规范`.
+- Every registered normative reference must be cited in the body with `{{std:...}}`.
+- Every body `{{std:...}}` citation must match a registered normative reference entry or its derivable dated/undated alias.
 - Use dated references when citing a specific chapter, clause, figure, table, or formula, or when future changes cannot be automatically accepted.
 - If no normative references exist, write exactly: `本文件没有规范性引用文件。`
 - Do not mix normative references into `# 参考文献`.
